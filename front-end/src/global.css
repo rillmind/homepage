@@ -1,0 +1,7 @@
+@import url("./Catppuccin.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font";
+  src: url("./assets/fonts/JetBrainsMonoNerdFont-Regular.ttf")
+    format("truetype");
+}
