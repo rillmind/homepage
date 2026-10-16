@@ -9,6 +9,7 @@ import (
 	"syscall"
 	"time"
 
+	"github.com/rillmind/homepage/back-end/internal/datetime"
 	"github.com/rillmind/homepage/back-end/internal/memory"
 )
 
@@ -17,6 +18,9 @@ func main() {
 
 	mh := memory.NewHandler()
 	mh.RegisterRoutes(mux)
+
+	dh := datetime.NewHandler()
+	dh.RegisterRoutes(mux)
 
 	server := &http.Server{
 		Addr:         ":2306",
