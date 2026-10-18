@@ -1,4 +1,4 @@
-.PHONY: run stop run-back run-front stop-back stop-front restart-back restart-front install install-back install-front
+.PHONY: run stop run-back run-front stop-back stop-front restart-back restart-front install install-back install-front start
 
 install-back:
 	$(MAKE) -C back-end install
@@ -15,6 +15,8 @@ run-front:
 	$(MAKE) -C front-end run
 
 run: run-back run-front
+
+start: run
 
 stop-back:
 	$(MAKE) -C back-end stop
