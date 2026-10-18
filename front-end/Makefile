@@ -1,4 +1,4 @@
-.PHONY: run stop restart install
+.PHONY: run stop restart install logs
 
 PID_FILE=.dev.pid
 
@@ -15,3 +15,6 @@ stop:
 	@echo "Stopped!"
 
 restart: stop run
+
+logs:
+	@trap 'exit 0' INT; tail -n 50 -f dev.log

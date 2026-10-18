@@ -1,4 +1,4 @@
-.PHONY: run stop run-back run-front stop-back stop-front restart-back restart-front install install-back install-front start
+.PHONY: run stop run-back run-front stop-back stop-front restart-back restart-front install install-back install-front start logs logs-back logs-front
 
 install-back:
 	$(MAKE) -C back-end install
@@ -33,3 +33,15 @@ restart-front:
 	$(MAKE) -C front-end restart
 
 restart: restart-back restart-front
+
+BACK_LOG=back-end/server.log
+FRONT_LOG=front-end/dev.log
+
+logs-back:
+	@trap 'exit 0' INT; tail -n 50 -f $(BACK_LOG)
+
+logs-front:
+	@trap 'exit 0' INT; tail -n 50 -f $(FRONT_LOG)
+
+logs:
+	@trap 'exit 0' INT; tail -n 50 -f $(BACK_LOG) $(FRONT_LOG)
