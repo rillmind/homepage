@@ -3,7 +3,113 @@
 Histórico das mudanças do projeto, commit a commit, do mais recente para o mais antigo.
 As mensagens seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0/).
 
+## 2026-10-17
+
+### `commit atual` docs: atualiza o changelog com os commits de 2026-10-17
+
+- Entradas para os commits de `d282131` a `eadcee5`.
+- A entrada mais recente do changelog passa a se chamar "commit atual", sem hash,
+  porque um commit não consegue conter o próprio hash. Na atualização seguinte ela
+  ganha o hash real.
+
+- `change-log.md`
+
+### `eadcee5` feat(front-end): adiciona layout principal com sidebar e monitor
+
+- Componente `Main` coloca a `Sidebar` ao lado do conteúdo (`display: flex`) e guarda
+  o item selecionado em `useState`, repassando `selected` e `onSelect` por props.
+- O conteúdo fica num `<main>` com o `Monitor` e espaço reservado para a área de serviços.
+- `App` passa a renderizar `Nav` e `Main`; o import duplicado de `global.css` sai,
+  porque o `main.tsx` já o importa.
+- Remove o componente `Memory` antigo, substituído pelo card dentro do `Monitor`.
+
+- `front-end/src/components/Main/Main.tsx`, `front-end/src/components/Main/Main.css`
+- `front-end/src/App.tsx`
+- `front-end/src/components/Memory/` (removido)
+
+### `713431a` feat(front-end): adiciona painel Monitor com card de memória
+
+- `Monitor`: grid com 5 colunas para cards de monitoramento; por enquanto só o de memória
+  está ativo.
+- Card `Memory`: mostra o uso em GB, o total e a porcentagem, com uma barra de progresso.
+  Usa o hook `useRam`, que saiu de `components/Memory/` e veio para dentro do `Monitor`.
+- `ProgressBar`: barra reutilizável que recebe `value` e `max`, limita o preenchimento
+  entre 0% e 100% e anima a mudança de largura.
+- As props `value` e `max` do `ProgressBar` ainda não têm tipo, então o `tsc` acusa
+  `any` implícito.
+
+- `front-end/src/components/Monitor/Monitor.tsx`, `Monitor.css`
+- `front-end/src/components/Monitor/Memory/Memory.tsx`, `Memory.css`, `useRam.tsx`
+- `front-end/src/components/Monitor/ProgressBar/ProgressBar.tsx`, `ProgressBar.css`
+
+### `55b75c1` feat(front-end): adiciona componente Sidebar com item selecionado
+
+- Lista de navegação com Overview, Network e Server Logs.
+- Recebe `selected` e `onSelect` por props: destaca o item ativo com a cor `mauve`
+  e avisa o componente pai quando outro item é clicado.
+- Efeito de hover com transição de cor.
+
+- `front-end/src/components/Sidebar/Sidebar.tsx`, `Sidebar.css`
+
+### `1ab6532` feat(front-end): redesenha a barra de navegação
+
+- Troca os ids por classes e o `<main>` por uma `div.navbarContainer`, liberando a
+  tag `<main>` para o conteúdo da página.
+- Adiciona ícones de relógio e lupa, campo de busca rápida e avatar de perfil.
+- Remove as variáveis de cor locais e passa a usar as do Catppuccin; medidas em `rem`.
+
+- `front-end/src/components/Nav/Nav.tsx`, `Nav.css`
+
+### `8163b36` style(front-end): aplica o tema Mocha pela classe no html e usa box-sizing border-box
+
+- O Mocha deixa de valer no `:root` e passa a vir da classe `mocha` no `<html>`.
+  O exemplo de estilo do `body` sai do `Catppuccin.css`.
+- `box-sizing: border-box` em todos os elementos (incluindo `::before` e `::after`):
+  padding e borda passam a contar dentro da largura e da altura definidas.
+- Fonte base de 20px e cor de fundo no `:root`.
+
+- `front-end/index.html`
+- `front-end/src/Catppuccin.css`, `front-end/src/global.css`, `front-end/src/index.css`
+
+### `6e4fc7e` docs(back-end): comenta o graceful shutdown no main.go
+
+Comentários explicando a goroutine do servidor, o canal de sinais, o `signal.Notify`,
+o prazo de 5s do contexto e por que o `Shutdown` faz o `ListenAndServe` retornar
+`http.ErrServerClosed`.
+
+- `back-end/cmd/server/main.go`
+
+### `3c6b5e3` refactor(back-end): unifica os handlers de memória e data/hora no pacote pcInfo
+
+- Os pacotes `memory` e `datetime` viram um único handler `pcInfo`, que registra as
+  mesmas rotas `GET /memory/info/` e `GET /datetime/info/`. A API não muda.
+- `main.go` registra só o handler `pcInfo`.
+
+- `back-end/internal/pcInfo/handler.go`
+- `back-end/internal/memory/` e `back-end/internal/datetime/` (removidos)
+- `back-end/cmd/server/main.go`
+
+### `5671c8b` build: adiciona alvos de logs e roda o back-end desacoplado do terminal
+
+- `logs`, `logs-back` e `logs-front` acompanham os logs com `tail -f`. O Ctrl+C encerra
+  só o `tail` e a aplicação continua rodando, porque ela está em outra sessão (`setsid`).
+- O back-end passa a subir com `setsid` e gravar a saída em `server.log`, que entra no
+  `.gitignore`.
+
+- `Makefile`, `back-end/Makefile`, `front-end/Makefile`
+- `back-end/.gitignore`
+
+### `7cf3d83` build: adiciona alvo start como alias de run
+
+- `Makefile`
+
 ## 2026-10-16
+
+### `d282131` docs: adiciona changelog com o histórico de cada commit
+
+Este arquivo, com uma entrada por commit desde o início do projeto.
+
+- `change-log.md`
 
 ### `296e6fc` docs: adiciona README com a ideia do projeto e como rodar
 
