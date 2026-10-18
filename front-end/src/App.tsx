@@ -1,13 +1,12 @@
 import "./App.css";
-import "./global.css";
 import Nav from "./components/Nav/Nav";
-import Memory from "./components/Memory/Memory";
+import Main from "./components/Main/Main";
 
 function App() {
   return (
     <>
       <Nav />
-      <Memory></Memory>
+      <Main />
     </>
   );
 }

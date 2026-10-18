@@ -1,0 +1,15 @@
+@import url("../../global.css");
+
+main {
+  display: flex;
+
+  max-width: 85vw;
+  padding: 2vw 3vw;
+
+  color: var(--ctp-text);
+  background-color: var(--ctp-base);
+}
+
+.mainContainer {
+  display: flex;
+}
