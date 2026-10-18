@@ -102,7 +102,6 @@
 }
 
 /* ---------- Mocha (escuro, padrao) ---------- */
-:root,
 .mocha,
 [data-theme="mocha"] {
   --ctp-rosewater: #f5e0dc;
@@ -131,10 +130,4 @@
   --ctp-base: #1e1e2e;
   --ctp-mantle: #181825;
   --ctp-crust: #11111b;
-}
-
-/* ---------- Exemplo de uso global ---------- */
-body {
-  background-color: var(--ctp-base);
-  color: var(--ctp-text);
 }

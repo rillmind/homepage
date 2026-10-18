@@ -14,7 +14,9 @@
   font-weight: 700;
   font-display: swap;
 }
-
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   font-family: "JetBrainsMono Nerd Font", monospace;
 }
