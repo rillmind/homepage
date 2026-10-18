@@ -1,0 +1,41 @@
+@import url("../../global.css");
+
+.sidebarContainer {
+  display: grid;
+  grid-template-columns: auto;
+  align-content: start;
+
+  width: 15vw;
+  width: 15vw;
+  height: 93vh;
+
+  list-style: none;
+  color: var(--ctp-text);
+  border-right: solid 1px var(--ctp-surface0);
+  background-color: var(--ctp-mantle);
+}
+
+.item {
+  margin: 1rem 1rem 0rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+
+  cursor: pointer;
+  background-color: var(--ctp-base);
+  border: 2px solid var(--ctp-surface0);
+  transition:
+    color 0.4s,
+    background-color 0.4s;
+}
+
+.item:hover {
+  color: var(--ctp-text);
+  background-color: var(--ctp-surface0);
+}
+
+.item.active {
+  color: var(--ctp-base);
+  font-weight: bold;
+  background-color: var(--ctp-mauve);
+  border: 2px solid var(--ctp-surface1);
+}
