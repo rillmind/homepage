@@ -9,25 +9,31 @@ export default function Nav() {
   }
 
   return (
-    <main>
-      <div id="logoName">
-        <div id="logo"> </div> <div id="name">Server Homepage</div>
+    <div className="navbarContainer">
+      <div className="logoName">
+        <div className="logo"> </div> <div className="name">Server Homepage</div>
       </div>
 
-      <div id="status">
-        <div id="ping"> </div>
-        <div id="ip">100.74.171.65</div> <div id="uptime">Uptime: 15d 7h</div>
+      <div className="status">
+        <div className="ping"> </div>
+        <div className="ip">100.74.171.65</div> <div className="uptime">Uptime: 15d 7h</div>
       </div>
 
-      <div id="datetime">
-        {datetime.date} {datetime.time}
+      <div className="datetime">
+        <div className="clock"> </div>
+        <div className="text">
+          {datetime.date} {datetime.time}
+        </div>
       </div>
 
-      <div id="search">Quick search</div>
+      <div className="quickSearch">
+        <div className="lupa"> </div>
+        <div className="search">Quick search</div>
+      </div>
 
-      <div id="configuration"> Configurações</div>
+      <div className="configuration"> Configurações</div>
 
-      <div id="profile"> </div>
-    </main>
+      <div className="profile"> </div>
+    </div>
   );
 }

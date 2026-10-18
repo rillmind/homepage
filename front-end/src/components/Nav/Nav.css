@@ -1,118 +1,135 @@
 @import url("../../global.css");
 
-* {
-  --catppuccin-bg0: #1e1e2e;
-  --catppuccin-bg1: #2f2f40;
-  --catppuccin-primary: #cba6f7;
-  background-color: var(--catppuccin-bg1);
-}
-
-main {
+.navbarContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  height: 50px;
-  padding: 10px;
+  width: 100vw;
+  height: 7vh;
+  padding: 0.5rem;
 
-  border-bottom: solid 1px var(--ctp-overlay0);
-  background-color: var(--catppuccin-bg0);
+  color: var(--ctp-text);
+  border-bottom: solid 1px var(--ctp-surface0);
+  background-color: var(--ctp-mantle);
 }
 
-main:hover {
+.navbarContainer:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  height: 50px;
-  padding: 10px;
+  min-height: 4vh;
+  padding: 0.5rem;
 
   cursor: default;
   border-bottom: solid 1px var(--ctp-overlay0);
-  background-color: var(--catppuccin-bg0);
+  background-color: var(--ctp-mantle);
 }
 
-/*#left,
-#right {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}*/
-
-#logoName {
+.logoName {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  gap: 10px;
+  gap: 0.5rem;
+  margin: 0 -3rem 0 0;
 
-  background-color: var(--catppuccin-bg0);
+  background-color: var(--ctp-base);
 }
 
-#logoName #logo {
+.logoName .logo {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 32px;
-  width: 15px;
-  height: 15px;
+  font-size: 1.7rem;
+  width: 0.7rem;
+  height: 0.7rem;
   margin: 0 0 0 0;
-  padding: 12px 16px 12px 12px;
+  padding: 1rem 1.25rem 1rem 1rem;
   border-radius: 5px;
 
   border: 1px solid var(--ctp-mauve);
-  background-color: var(--catppuccin-bg1);
+  background-color: var(--ctp-surface0);
 }
 
-#logoName #name {
-  background-color: var(--catppuccin-bg0);
-  font-size: 22px;
+.logoName .name {
+  background-color: var(--ctp-base);
+  font-size: 1rem;
 }
 
-#status {
+.status {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
-  font-size: 12px;
-  gap: 10px;
-  padding: 0px 20px;
+  font-size: 0.7rem;
+  gap: 0.5rem;
+  margin: 0 5rem 0 0;
+  padding: 0 0.5rem;
   border-radius: 30px;
+  background-color: var(--ctp-surface0);
 }
 
-#status #ping {
+.status .ping {
   font-size: 22px;
-  padding: 0 10px 0px 0;
+  padding: 0 0.5rem 0px 0;
 
   color: var(--ctp-green);
 }
 
-#datetime {
-  font-size: 16px;
+.datetime {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 0.7rem;
+  font-size: 0.8rem;
+  padding: 0 0.4rem;
+  border-radius: 6px;
+
+  background-color: var(--ctp-surface0);
+}
+
+.datetime .clock {
+  color: var(--ctp-blue);
+}
+
+.quickSearch {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+  padding: 0.4rem 5rem 0.4rem 0.7rem;
+  border-radius: 8px;
+
+  background-color: var(--ctp-surface0);
+}
+
+.quickSearch .search {
+  font-size: 0.7rem;
   padding: 0px 7px;
   border-radius: 5px;
 }
 
-#search {
-  font-size: 16px;
+.configuration {
+  font-size: 0.7rem;
   padding: 0px 7px;
   border-radius: 5px;
+
+  background-color: var(--ctp-surface0);
 }
 
-#configuration {
-  font-size: 16px;
-  padding: 0px 7px;
-  border-radius: 5px;
-}
-
-#profile {
-  font-size: 16px;
-  padding: 0px 10px 0 8px;
+.profile {
+  font-size: 1rem;
+  padding: 0.2rem 0.7rem 0.2rem 0.6rem;
   border-radius: 100%;
+
+  color: var(--ctp-surface1);
+  background-color: var(--ctp-mauve);
 }
