@@ -1,5 +1,8 @@
 import "./ProgressBar.css";
-export default function ProgressBar({ value, max }) {
+
+type props = { value: number; max: number };
+
+export default function ProgressBar({ value, max = 100 }: props) {
   const percent = Math.min(100, Math.max(0, (value / max) * 100));
 
   return (
