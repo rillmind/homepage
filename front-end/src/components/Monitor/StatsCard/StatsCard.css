@@ -1,0 +1,52 @@
+@import url("../../../global.css");
+
+.statsCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: space-around;
+  align-content: space-between;
+  align-items: start;
+
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 6rem;
+  max-height: 100%;
+  height: 100%;
+  padding: 1rem 1rem;
+  border-radius: 10px;
+
+  border: 2px solid var(--ctp-surface0);
+  background-color: var(--ctp-mantle);
+}
+
+.statsHeader {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+}
+
+.statsHeader .statsLogoName {
+  display: flex;
+  justify-content: start;
+  width: 80%;
+}
+
+.statsLogo {
+  margin: 0 0.7rem 0 0;
+
+  color: var(--ctp-mauve);
+}
+
+.statsHeader .porcent {
+  justify-self: end;
+}
+
+.statsBody {
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+}
