@@ -54,9 +54,20 @@ func (h *Handler) GetMemoryInfo(w http.ResponseWriter, req *http.Request) {
 }
 
 func (h *Handler) GetCpuInfo(w http.ResponseWriter, req *http.Request) {
-	info, _ := cpu.Info()
-	percent, _ := cpu.Percent(time.Second, false)
-	cores, _ := cpu.Counts(true)
+	info, err := cpu.Info()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	percent, err := cpu.Percent(time.Second, false)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	cores, err := cpu.Counts(true)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 
 	rb := CpuResponyBody{
 		Heartz: info[0].Mhz,
