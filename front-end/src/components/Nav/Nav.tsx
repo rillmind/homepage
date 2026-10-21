@@ -11,12 +11,14 @@ export default function Nav() {
   return (
     <div className="navbarContainer">
       <div className="logoName">
-        <div className="logo"> </div> <div className="name">Server Homepage</div>
+        <div className="logo"> </div>{" "}
+        <div className="name">Server Homepage</div>
       </div>
 
       <div className="status">
         <div className="ping"> </div>
-        <div className="ip">100.74.171.65</div> <div className="uptime">Uptime: 15d 7h</div>
+        <div className="ip">100.74.171.65</div>{" "}
+        <div className="uptime">Uptime: 15d 7h</div>
       </div>
 
       <div className="datetime">
@@ -31,7 +33,10 @@ export default function Nav() {
         <div className="search">Quick search</div>
       </div>
 
-      <div className="configuration"> Configurações</div>
+      <div className="configuration">
+        <div className="icon"> </div>{" "}
+        <div className="display">Configurações</div>
+      </div>
 
       <div className="profile"> </div>
     </div>

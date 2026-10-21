@@ -10,9 +10,9 @@ export default function Cpu() {
       <StatsCard
         icon={""}
         title={"CPU LOAD"}
-        percent={"..."}
-        value={"..."}
-        details={"..."}
+        headerValue={"..."}
+        bodyValue={"..."}
+        bodyDetails={"..."}
       />
     );
   }
@@ -21,9 +21,9 @@ export default function Cpu() {
     <StatsCard
       icon={""}
       title={"CPU LOAD"}
-      percent={cpu.usado.toFixed(0)}
-      value={(cpu.heartz / 1024).toFixed(1) + " Ghz"}
-      details={cpu.cores.toString()}
+      headerValue={cpu.usado.toFixed(0)}
+      bodyValue={(cpu.heartz / 1024).toFixed(1) + " Ghz"}
+      bodyDetails={cpu.cores.toString() + " Cores"}
     />
   );
 }

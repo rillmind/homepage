@@ -16,9 +16,9 @@ export default function Memory() {
     <StatsCard
       icon={""}
       title={"Ram Memory"}
-      percent={memoriaUsadaPorcento.toFixed(0)}
-      value={mem.usadoGB.toFixed(0) + " Gb"}
-      details={mem.totalGB.toFixed(1)}
+      headerValue={memoriaUsadaPorcento.toFixed(0)}
+      bodyValue={mem.usadoGB.toFixed(1) + " Gb"}
+      bodyDetails={"de " + mem.totalGB.toFixed(1)}
     />
   );
 }

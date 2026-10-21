@@ -4,16 +4,16 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 type StatsProps = {
   icon: string;
   title: string;
-  percent: string;
-  value: string;
-  details?: string;
+  headerValue: string;
+  bodyValue: string;
+  bodyDetails?: string;
 };
 export default function StatsCard({
   icon,
   title,
-  percent,
-  value,
-  details,
+  headerValue,
+  bodyValue,
+  bodyDetails,
 }: StatsProps) {
   return (
     <div className="statsCard">
@@ -23,16 +23,16 @@ export default function StatsCard({
           <div className="statsName">{title}</div>
         </div>
 
-        <div className="porcent">{parseFloat(percent).toFixed(0)}%</div>
+        <div className="porcent">{parseFloat(headerValue).toFixed(0)}%</div>
       </div>
 
       <div className="statsBody">
-        <h2>{value}</h2>
-        <h6>{details}</h6>
+        <h2>{bodyValue}</h2>
+        <h6>{bodyDetails}</h6>
       </div>
 
       <div className="statsFooter">
-        <ProgressBar value={parseFloat(percent)} max={100} />
+        <ProgressBar value={parseFloat(headerValue)} max={100} />
       </div>
     </div>
   );

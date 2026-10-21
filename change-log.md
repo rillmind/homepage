@@ -3,9 +3,77 @@
 Histórico das mudanças do projeto, commit a commit, do mais recente para o mais antigo.
 As mensagens seguem o padrão [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0/).
 
+## 2026-10-20
+
+### `commit atual` docs: atualiza o changelog com os commits de 2026-10-20
+
+- Entradas para os commits de `b7ef114` a `83048cf`.
+- A entrada `commit atual` anterior ganha o hash real, `d9daa59`.
+
+- `change-log.md`
+
+### `83048cf` fix: pequenos ajustes no componentes Monitor, ProgressBar index.css e no readme
+
+- `Monitor` passa a mostrar o card de CPU antes do de memória; altura mínima do
+  painel sobe de `5rem` para `6rem`.
+- `ProgressBar`: props tipadas (`value`, `max` com padrão `100`), o que resolve o `any`
+  implícito apontado em `713431a`; o preenchimento troca `blue` por `mauve`.
+- `Nav`: o `:hover` da navbar deixa de repetir o layout e só muda o cursor; o fundo
+  do logo e do nome passa de `base` para `mantle`, igual ao resto da barra; altura
+  mínima de `2.5rem`; em telas estreitas a busca rápida vira um círculo só com a lupa.
+- `index.css`: remove o `background-color` fixo `#1e1e2e`.
+- `README.md` renomeado para `readme.md`, sem mudar o conteúdo.
+
+- `front-end/src/components/Monitor/Monitor.tsx`, `Monitor.css`
+- `front-end/src/components/Monitor/ProgressBar/ProgressBar.tsx`, `ProgressBar.css`
+- `front-end/src/components/Nav/Nav.css`
+- `front-end/src/index.css`
+- `readme.md`
+
+### `7636435` feat(back-end): adicionando endpoint GET para informacoes da cpu para o front e ajustando o handler.go e criando models.go para organizar structs
+
+- Nova rota `GET /cpu/info/`, que devolve `heartz` (MHz da primeira CPU), `usado`
+  (uso médio em %, medido ao longo de 1s) e `cores` (núcleos lógicos).
+- As structs de resposta saem do `handler.go` e vão para `models.go`.
+- Os erros de `cpu.Info()` e `cpu.Percent()` são ignorados; se algum falhar, o acesso
+  a `info[0]` ou `percent[0]` causa panic em vez de responder 500.
+- `.gitignore` passa a ignorar `server.*`, cobrindo também os logs de conflito de sync.
+
+- `back-end/internal/pcInfo/handler.go`, `models.go`
+- `back-end/.gitignore`
+
+### `558b3db` feat(front-end): implementando componente Cpu com StatsCard
+
+- Card `Cpu`: uso em %, frequência em GHz e número de cores, usando `StatsCard` e
+  `usePolling` em `/cpu/info/`.
+- Enquanto não há resposta do servidor, mostra o card com `...` nos campos.
+
+- `front-end/src/components/Monitor/Cpu/Cpu.tsx`
+
+### `4a167a2` feat(front-end): ajustando componente de memoria ram no monitor de sistema para se encaixar no componente StatsCard
+
+- `Memory` passa a só calcular os valores e repassá-los ao `StatsCard`.
+- Remove `Memory.css`, que foi para `StatsCard.css`, e o hook `useRam`, substituído
+  por `usePolling`.
+- O valor usado agora aparece sem casa decimal, e o total aparece sem o "de" na frente.
+
+- `front-end/src/components/Monitor/Memory/Memory.tsx`
+- `front-end/src/components/Monitor/Memory/Memory.css`, `useRam.tsx` (removidos)
+
+### `b7ef114` feat(front-end): componente para facilitar a adicao de card no monitor de sistema
+
+- `StatsCard`: card genérico do monitor que recebe `icon`, `title`, `percent`, `value`
+  e `details` (opcional) por props e desenha o cabeçalho, o valor e a `ProgressBar`.
+- `usePolling<T>(url, intervalMs)`: hook genérico que busca a URL a cada intervalo,
+  no lugar de um hook por métrica. O `url` não está na lista de dependências do
+  `useEffect`, então trocar a URL sem trocar o intervalo não refaz a busca.
+- Estilo do card vem do antigo `Memory.css`, com classes `stats*` e ícone em `mauve`.
+
+- `front-end/src/components/Monitor/StatsCard/StatsCard.tsx`, `StatsCard.css`, `getStats.tsx`
+
 ## 2026-10-17
 
-### `commit atual` docs: atualiza o changelog com os commits de 2026-10-17
+### `d9daa59` docs: atualiza o changelog com os commits de 2026-10-17
 
 - Entradas para os commits de `d282131` a `eadcee5`.
 - A entrada mais recente do changelog passa a se chamar "commit atual", sem hash,

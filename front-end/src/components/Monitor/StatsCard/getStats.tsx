@@ -15,7 +15,7 @@ export function usePolling<T>(url: string, intervalMs = 1000) {
     buscar();
     const id = setInterval(buscar, intervalMs);
     return () => clearInterval(id);
-  }, [intervalMs]);
+  }, [url, intervalMs]);
 
   return stat;
 }

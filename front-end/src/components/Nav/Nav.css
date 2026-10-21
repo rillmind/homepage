@@ -108,12 +108,12 @@
   border-radius: 5px;
 }
 
-@media (max-width: 49vw) {
+@media (max-width: 1000px) {
   .quickSearch {
     justify-content: center;
     width: 2rem;
     height: 2rem;
-    padding: 0; /* tira o padding de 5rem que fazia o retângulo */
+    padding: 0 0.3rem 0 0; /* tira o padding de 5rem que fazia o retângulo */
     border-radius: 50%; /* largura = altura + 50% de raio = círculo */
     cursor: pointer;
   }
@@ -121,9 +121,24 @@
   .quickSearch .search {
     display: none; /* esconde o texto "Quick search", fica só a lupa */
   }
+
+  .configuration {
+    font-size: 0.7rem;
+    padding: 0 0.3rem 0 0; /* tira o padding de 5rem que fazia o retângulo */
+    border-radius: 50%; /* largura = altura + 50% de raio = círculo */
+
+    background-color: var(--ctp-surface0);
+  }
+
+  .configuration .display {
+    display: none;
+  }
 }
 
 .configuration {
+  display: flex;
+
+  gap: 0.5rem;
   font-size: 0.7rem;
   padding: 0px 7px;
   border-radius: 5px;
