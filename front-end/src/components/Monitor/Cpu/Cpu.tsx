@@ -9,7 +9,7 @@ export default function Cpu() {
     return (
       <StatsCard
         icon={""}
-        title={"CPU LOAD"}
+        title={"CPU"}
         headerValue={"..."}
         bodyValue={"..."}
         bodyDetails={"..."}
@@ -20,7 +20,7 @@ export default function Cpu() {
   return (
     <StatsCard
       icon={""}
-      title={"CPU LOAD"}
+      title={"CPU"}
       headerValue={cpu.usado.toFixed(0)}
       bodyValue={(cpu.heartz / 1024).toFixed(1) + " Ghz"}
       bodyDetails={cpu.cores.toString() + " Cores"}
