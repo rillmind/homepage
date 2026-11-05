@@ -82,6 +82,25 @@ make restart
 Também dá para controlar cada parte separadamente com `make run-back`,
 `make stop-front` etc.
 
+## Como testar
+
+Ainda não há testes automatizados. Para conferir que tudo compila:
+
+```sh
+cd back-end && go build ./... && go vet ./... && cd ..
+cd front-end && bun install && bun run build && bun run lint && cd ..
+```
+
+Para conferir o funcionamento, suba o back-end (`make run-back`) e consulte os endpoints:
+
+```sh
+curl http://localhost:2306/memory/info/     # {"totalGB":15.29,"usadoGB":6.14}
+curl http://localhost:2306/datetime/info/   # {"date":"23/10/2026","time":"17:00"}
+```
+
+Depois rode `make run-front`, abra o endereço do Vite e veja se a barra do topo mostra data e
+hora e se o bloco de memória atualiza a cada segundo. `make stop` encerra os dois.
+
 ## Estrutura
 
 ```
