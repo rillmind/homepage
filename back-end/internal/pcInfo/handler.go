@@ -6,6 +6,8 @@ import (
 	"time"
 
 	"github.com/shirou/gopsutil/v4/cpu"
+	"github.com/shirou/gopsutil/v4/disk"
+	"github.com/shirou/gopsutil/v4/host"
 	"github.com/shirou/gopsutil/v4/mem"
 )
 
@@ -21,6 +23,8 @@ func (h *Handler) RegisterRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("GET /datetime/info/", h.GetDatetimeInfo)
 	mux.HandleFunc("GET /memory/info/", h.GetMemoryInfo)
 	mux.HandleFunc("GET /cpu/info/", h.GetCpuInfo)
+	mux.HandleFunc("GET /disk/info/", h.GetDiskInfo)
+	mux.HandleFunc("GET /uptime/info/", h.GetUptimeInfo)
 }
 
 func (h *Handler) GetDatetimeInfo(w http.ResponseWriter, req *http.Request) {
@@ -73,6 +77,39 @@ func (h *Handler) GetCpuInfo(w http.ResponseWriter, req *http.Request) {
 		Heartz: info[0].Mhz,
 		Usado:  percent[0],
 		Cores:  cores,
+	}
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(rb)
+}
+
+func (h *Handler) GetDiskInfo(w http.ResponseWriter, req *http.Request) {
+	disco, err := disk.Usage("/")
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	rb := DiskResponseBody{
+		uint64(disco.Total / GB),
+		uint64(disco.Used / GB),
+		uint64(disco.Free / GB),
+		disco.UsedPercent,
+	}
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(rb)
+}
+
+func (h *Handler) GetUptimeInfo(w http.ResponseWriter, req *http.Request) {
+	uptime, err := host.Uptime()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	rb := UptimeResponseBody{
+		uptime,
 	}
 
 	w.Header().Set("Access-Control-Allow-Origin", "*")
